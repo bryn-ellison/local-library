@@ -3,13 +3,12 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+require("dotenv").config();
 
 // MongoDB connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB =
-  "mongodb+srv://brynaellison:YZ3FAveqknc1CAxY@cluster0.3flmwm6.mongodb.net/local_library?retryWrites=true&w=majority";
-
+const mongoDB = process.env.SECRET_KEY;
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
